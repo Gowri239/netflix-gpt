@@ -4,6 +4,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constants";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -39,13 +40,9 @@ const Header = () => {
       />
       {user && (
         <div className="flex my-3 mx-0">
-          <img
-            className="rounded-full h-12 w-12"
-            src="./user.png"
-            alt="user_logo"
-          />
+          <img className="h-10 w-10" src={USER_AVATAR} alt="user_logo" />
           <button
-            className="border my-2 h-7 ml-1 px-2 py-0 rounded-3xl bg-red-500 text-white cursor-pointer"
+            className="my-2 h-7 ml-1 px-2 py-0 text-white text-lg cursor-pointer"
             onClick={handleSignOut}
           >
             Sign Out
