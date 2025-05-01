@@ -9,6 +9,7 @@ import { toggleGPTSearch } from "../utils/gptSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gptSearch.showGptSearch);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -50,7 +51,7 @@ const Header = () => {
             className="font-bold px-2 my-3 mx-4 h-10 text-white bg-purple-500 rounded-lg cursor-pointer"
             onClick={toggleGPTDisplay}
           >
-            GPT Search
+            {showGptSearch ? "Home Page" : "GPT Search"}
           </button>
           <div className="flex my-3 mx-0">
             <img className="h-10 w-10" src={USER_AVATAR} alt="user_logo" />
