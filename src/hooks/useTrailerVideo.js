@@ -9,7 +9,6 @@ const useTrailerVideo = (movieId) => {
     const url = `${MovieVideosURL}/${movieId}/videos`;
     const resp = await fetch(url, options);
     const data = await resp.json();
-    console.log("tariler", data);
 
     const trailerVideos = data?.results?.filter(
       (video) => video.type === "Trailer"

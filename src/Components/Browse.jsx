@@ -1,11 +1,14 @@
 import React from "react";
 import Header from "./Header";
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import useMovies from "../hooks/useMovies";
 
 const Browse = () => {
-  useNowPlayingMovies();
+  const movieTypes = ["now_playing", "popular", "top_rated", "upcoming"];
+  movieTypes.map((type) => {
+    useMovies(type);
+  });
   return (
     <div>
       <Header />
