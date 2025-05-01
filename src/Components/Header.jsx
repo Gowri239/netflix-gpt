@@ -4,8 +4,9 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
-import { USER_AVATAR } from "../utils/constants";
+import { SUPPORTED_LANGUAGES, USER_AVATAR } from "../utils/constants";
 import { toggleGPTSearch } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/langSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -38,6 +39,10 @@ const Header = () => {
     dispatch(toggleGPTSearch());
   };
 
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
     <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
       <img
@@ -46,7 +51,19 @@ const Header = () => {
         alt="logo"
       />
       {user && (
-        <div className="flex">
+        <div className="flex p-2">
+          {showGptSearch && (
+            <select
+              className="px-1 my-3 mx-2 h-10 bg-white/80 text-black rounded-lg"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             className="font-bold px-2 my-3 mx-4 h-10 text-white bg-purple-500 rounded-lg cursor-pointer"
             onClick={toggleGPTDisplay}

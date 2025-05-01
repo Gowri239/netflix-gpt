@@ -1,4 +1,4 @@
-const lang = {
+const languageConfig = {
   en: {
     search: "Search",
     gptSearchPlaceholder: "What would you like to watch today?",
@@ -21,4 +21,4 @@ const lang = {
   },
 };
 
-export default lang;
+export default languageConfig;
