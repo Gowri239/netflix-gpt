@@ -39,14 +39,19 @@ const Header = () => {
         alt="logo"
       />
       {user && (
-        <div className="flex my-3 mx-0">
-          <img className="h-10 w-10" src={USER_AVATAR} alt="user_logo" />
-          <button
-            className="my-2 h-7 ml-1 px-2 py-0 text-white text-lg cursor-pointer"
-            onClick={handleSignOut}
-          >
-            Sign Out
+        <div className="flex">
+          <button className="font-bold px-2 my-3 mx-4 h-10 text-white bg-purple-500 rounded-lg cursor-pointer">
+            GPT Search
           </button>
+          <div className="flex my-3 mx-0">
+            <img className="h-10 w-10" src={USER_AVATAR} alt="user_logo" />
+            <button
+              className="my-2 h-7 ml-1 px-2 py-0 text-white text-lg cursor-pointer"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+          </div>
         </div>
       )}
     </div>
